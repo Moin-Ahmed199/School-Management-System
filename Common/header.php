@@ -17,5 +17,9 @@
 
 
 <!-- Navbar -->
-
+<div class="container-fluid hf-bg-color text-center text-lg-start text-white ">
+<div class="text-center p-3">
+        Header
+      </div>
+</div>
 <!-- Navbar -->

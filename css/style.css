@@ -1,14 +1,15 @@
 
-:root{
-    --bg-color: #18230F; /* Main dark background */
-    --box-bg:#27391C; /* Section or card background */
-    --btn-color: #255F38;  /* Primary color (buttons, links) */
-    --hover-color: #1F7D53; /* Accent / hover / highlights */
-    --primary-color: #F2F2F2; /* Light text / background / inputs */
-    --hf-color:#222831; /* Navbar / footer background */
-    --alert-color:rgba(217, 255, 0, 0.911);
-}
 
+  :root {
+    --bg-color: #0D0D0D;         /* True matte black background */
+    --box-bg: #1A1A1A;           /* Slightly lighter matte for boxes/cards */
+    --btn-color: #B00020;        /* Deep red (material-style danger/red tone) */
+    --hover-color: #D32F2F;      /* Brighter red for hover highlights */
+    --primary-color: #F5F5F5;    /* Light gray text for high contrast */
+    --hf-color: #121212;         /* Matte black for header/footer */
+    --alert-color: #FF5252;      /* Vivid red for warnings/errors (alerts) */
+  }
+  
 
 
 *{
@@ -21,20 +22,6 @@ html,body{
     color:var(--primary-color);
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-
-}
-
-body {
-    overflow-x: hidden;
-  }
-  
-
-#main-container{
-    height: auto;
-    background-color: url(../images/bg.jpg);
 }
 
 .btn-color{

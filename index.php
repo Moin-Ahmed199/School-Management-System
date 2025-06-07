@@ -25,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             }
         } else {
-            echo "Wrong password.";
+            $passwordError = "Wrong password.";
         }
     } else {
-        echo "No user found.";
+        $emailError = "No user found.";
     }
 }
 ?>
@@ -40,28 +40,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include './Common/header.php'; ?>
 
 
-<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+<body>
     
 
+<div class="container-fluid bg-color p-5 d-flex align-items-center justify-content-center gap-3 flex-sm-wrap flex-lg-nowrap"  id="main-container">
+
+<div class="container col-6 text-center p-5 rounded-3  h-100 
+flex-column d-flex align-items-center justify-content-center">
+    <h1 class="text-center text-white mb-4">Welcome to The Brighten Stars</h1>
+    <p class="text-center text-white mb-5">Your journey to knowledge and growth starts here.</p>
+</div>
 
 
-<div class="container col-6 border p-5 mt-5 ">
-    <h2 class="text-center pb-2">The Brighten Stars</h2>
-<form method="POST" action="index.php">
+<div class="container col-6  p-5 rounded-3 h-100 box-color" id="login-container">
+    <h1 class="text-center mb-2 text-white ">Login Panel</h1>
+    <h6 class="text-white text-center mb-2" >Learn and Grow in safe hands</h6>
+<form method="POST" action="index.php" class="text-white p-4  ">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <?php if (!empty($emailError)): ?>
+      <small class="alert-color"><?php echo $emailError; ?></small>
+    <?php endif; ?>
+    <div id="emailHelp" class=" text-color">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <label for="exampleInputPassword1" class="form-label ">Password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+    <?php if (!empty($passwordError)): ?>
+      <small class="alert-color"><?php echo $passwordError; ?></small>
+    <?php endif; ?>
   </div>
  
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-color">Login</button>
+  <button type="submit" class="btn btn-color">Sign UP</button>
 </form>
 
 </div>
+</div>
+
 <!-- 
 <form method="POST" action="index.php">
     <input type="email" name="email" placeholder="Enter email" required />

@@ -1,12 +1,60 @@
+
+:root{
+    --bg-color: #18230F; /* Main dark background */
+    --box-bg:#27391C; /* Section or card background */
+    --btn-color: #255F38;  /* Primary color (buttons, links) */
+    --hover-color: #1F7D53; /* Accent / hover / highlights */
+    --primary-color: #F2F2F2; /* Light text / background / inputs */
+    --hf-color:#222831; /* Navbar / footer background */
+    --alert-color:rgba(217, 255, 0, 0.911);
+}
+
+
+
 *{
     box-sizing: border-box;
 }
 
 
 body{
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    height: 100%;
+    color:var(--primary-color);
+
+}
+
+#main-container{
+    height: 60vh;
+    background-color: url(../images/bg.jpg);
+}
+
+.btn-color{
+    background-color: var(--btn-color);
+    color: var(--primary-color);
+}
+
+.btn-color:hover{
+    background-color: var(--hover-color);
+    color: var(--primary-color);
+
+}
+
+.box-color{
+    background-color: var(--box-bg);
+}
+
+.alert-color{
+    color: var(--alert-color);
+}
+
+.bg-color{
+    background-color: var(--bg-color);
 }
 
 
+.hf-bg-color{
+    background-color: var(--hf-color);
+}
+
+text-color{
+    color: var(--primary-color);
+}

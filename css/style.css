@@ -16,14 +16,24 @@
 }
 
 
-body{
+html,body{
     height: 100%;
     color:var(--primary-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 
 }
 
+body {
+    overflow-x: hidden;
+  }
+  
+
 #main-container{
-    height: 60vh;
+    height: auto;
     background-color: url(../images/bg.jpg);
 }
 
@@ -55,6 +65,6 @@ body{
     background-color: var(--hf-color);
 }
 
-text-color{
+.text-color{
     color: var(--primary-color);
 }

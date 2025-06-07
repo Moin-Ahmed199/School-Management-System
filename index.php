@@ -3,6 +3,12 @@ session_start();
 include './Common/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+       $action = $_POST["action"];
+        if ($action === "login") {
+            // login logic
+   
+
     $email = $_POST["email"];
     $password = $_POST["password"];
 
@@ -24,13 +30,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: teacher.php");
                 exit();
             }
+
         } else {
             $passwordError = "Wrong password.";
         }
     } else {
         $emailError = "No user found.";
     }
-}
+         } 
+         elseif ($action === "signup") {
+            // redirect to signup or handle it here
+            header("Location: signup.php");
+            exit();
+        }
+    
+    }
+   
 ?>
 
 
@@ -43,16 +58,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     
 
-<div class="container-fluid bg-color p-5 d-flex align-items-center justify-content-center gap-3 flex-sm-wrap flex-lg-nowrap"  id="main-container">
+<div class="container-fluid bg-color p-5 d-flex align-items-center justify-content-center gap-3 
+flex-md-wrap flex-lg-nowrap row g-0"  id="main-container">
 
-<div class="container col-6 text-center p-5 rounded-3  h-100 
+<div class="container col-lg-6 col-md-12 col-12 text-center p-5 p-md-2 p-sm-0 rounded-3  min-vh-25 max-vh-100 
 flex-column d-flex align-items-center justify-content-center">
     <h1 class="text-center text-white mb-4">Welcome to The Brighten Stars</h1>
-    <p class="text-center text-white mb-5">Your journey to knowledge and growth starts here.</p>
+    <p class="text-center text-white mb-2">Your journey to knowledge and growth starts here.</p>
 </div>
 
 
-<div class="container col-6  p-5 rounded-3 h-100 box-color" id="login-container">
+<div class="container col-12 col-lg-6 col-md-12 p-5 rounded-3 min-vh-50 max-vh-100  box-color" id="login-container">
     <h1 class="text-center mb-2 text-white ">Login Panel</h1>
     <h6 class="text-white text-center mb-2" >Learn and Grow in safe hands</h6>
 <form method="POST" action="index.php" class="text-white p-4  ">
@@ -72,19 +88,17 @@ flex-column d-flex align-items-center justify-content-center">
     <?php endif; ?>
   </div>
  
-  <button type="submit" class="btn btn-color">Login</button>
-  <button type="submit" class="btn btn-color">Sign UP</button>
+<!-- Inside the same form -->
+<button type="submit" name="action" value="login" class="btn btn-color">Login</button>
+<button type="submit" name="action" value="signup" class="btn btn-color">Sign Up</button>
+
+
 </form>
 
 </div>
 </div>
 
-<!-- 
-<form method="POST" action="index.php">
-    <input type="email" name="email" placeholder="Enter email" required />
-    <input type="password" name="password" placeholder="Enter password" required />
-    <button type="submit">Login</button>
-</form> -->
+
 
 
 <?php include './Common/footer.php'; ?>

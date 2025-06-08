@@ -3,64 +3,85 @@
 session_start();
 session_destroy(); // Make sure session is cleared
 ?>
+
+
+
+
+
 <?php
 session_start();
 include './Common/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $action = $_POST["action"];
 
-       $action = $_POST["action"];
-        if ($action === "login") {
-            // login logic
-   
+    if ($action === "login") {
 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        // Step 1: Check in users table (admin)
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $adminResult = $stmt->get_result();
 
-    if ($user = $result->fetch_assoc()) {
-        // Plain text password comparison (not secure for production)
-        if ($password === $user["password"]) {
-            $_SESSION["user_id"] = $user["id"];
-            $_SESSION["role"] = $user["role"];
-
-            if ($user["role"] == "admin") {
+        if ($admin = $adminResult->fetch_assoc()) {
+            if ($password === $admin["password"] && $admin["role"] == "admin") {
+                $_SESSION["user_id"] = $admin["id"];
+                $_SESSION["role"] = "admin";
                 header("Location: admin.php");
                 exit();
-            } elseif ($user["role"] == "teacher") {
+            }
+        }
+
+        // Step 2: Check in teachers table
+        $stmt = $conn->prepare("SELECT * FROM teachers WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $teacherResult = $stmt->get_result();
+
+        if ($teacher = $teacherResult->fetch_assoc()) {
+            if ($password === $teacher["password"]) {
+                $_SESSION["user_id"] = $teacher["id"];
+                $_SESSION["role"] = "teacher";
                 header("Location: teacher.php");
                 exit();
             }
-                elseif ($user["role"] == "student") {
-                    header("Location: student.php");
-                    exit();
-                }
-            
+        }
 
-        } else {
-            $passwordError = "Wrong password.";
+        // Step 3: Check in students table
+        $stmt = $conn->prepare("SELECT * FROM students WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $studentResult = $stmt->get_result();
+
+        if ($student = $studentResult->fetch_assoc()) {
+            if ($password === $student["password"]) {
+                $_SESSION["user_id"] = $student["id"];
+                $_SESSION["role"] = "student";
+                header("Location: student.php");
+                exit();
+            }
         }
-    } else {
-        $emailError = "No user found.";
+
+        // If none matched
+        $loginError = "Invalid email or password.";
     }
-         } 
-         elseif ($action === "signup") {
-            // redirect to signup or handle it here
-            header("Location: signup.php");
-            exit();
-        }
-    
-    }
+
    
+}
 ?>
 
 
 
-
+<script>
+  window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  });
+</script>
 
 <?php include './Common/header.php'; ?>
 
@@ -85,22 +106,21 @@ flex-column d-flex align-items-center justify-content-center">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <?php if (!empty($emailError)): ?>
-      <small class="alert-color"><?php echo $emailError; ?></small>
-    <?php endif; ?>
+    
     <div id="emailHelp" class=" text-color">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label ">Password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-    <?php if (!empty($passwordError)): ?>
-      <small class="alert-color"><?php echo $passwordError; ?></small>
-    <?php endif; ?>
+   
   </div>
- 
+  <?php if (!empty($loginError)): ?>
+    <div class="alert alert-danger alert-div" role="alert ">
+        <strong>Error!</strong> <?php echo $loginError; ?>
+    </div>
+    <?php endif; ?>
 <!-- Inside the same form -->
 <button type="submit" name="action" value="login" class="btn btn-color">Login</button>
-<button type="submit" name="action" value="signup" class="btn btn-color">Regiter now</button>
 
 
 </form>

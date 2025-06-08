@@ -83,15 +83,7 @@ flex-md-wrap flex-lg-nowrap row g-0 "  id="main-container">
     </select>
   </div>
   <!-- Preferred Timing -->
-  <div class="mb-3">
-    <label class="form-label">Preferred Timing</label>
-    <select name="timing" class="form-select">
-      <option selected disabled>Select Timing</option>
-      <option value="Morning">Morning (9 AM - 12 PM)</option>
-      <option value="Afternoon">Afternoon (1 PM - 4 PM)</option>
-      <option value="Evening">Evening (5 PM - 8 PM)</option>
-    </select>
-  </div>
+
 
     <!-- Address -->
 

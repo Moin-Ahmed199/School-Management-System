@@ -18,9 +18,12 @@
 
 
 <!-- Navbar -->
-<div class="container-fluid hf-bg-color text-center text-lg-start text-white ">
-<div class="text-center p-3">
-        Header
-      </div>
+<div class="container-fluid d-flex align-items-center justify-content-center hf-bg-color text-lg-start text-white ">
+<h2 class="text-center p-3 m-0">The Brighten Stars</h2>
+
+<!-- <div class="text-center p-3 m-0">
+<?php echo "Welcome {$_SESSION['role']}";
+?>
+</div> -->
 </div>
 <!-- Navbar -->

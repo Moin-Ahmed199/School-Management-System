@@ -11,10 +11,10 @@
         >
           <i class="fas fa-tachometer-alt fa-fw me-3 "></i><span >Main dashboard</span>
         </a>
-        <a href="signup.php" class=" list-item-design py-2 ripple  rounded">
+        <a href="student.php" class=" list-item-design py-2 ripple  rounded">
           <i class="fas fa-chart-area fa-fw me-3"></i><span>Students</span>
         </a>
-        <a href="#" class=" list-item-design py-2 ripple rounded"
+        <a href="teacher.php" class=" list-item-design py-2 ripple rounded"
           ><i class="fas fa-lock fa-fw me-3"></i><span>Teachers</span></a
         >
         <a href="#" class=" list-item-design py-2 ripple rounded"

@@ -1,31 +1,81 @@
 
+<?php  
+include './Common/db.php';
+
+$query = "SELECT * FROM students";
+$result = mysqli_query($conn, $query);
+
+
+?>
 
 
 
-
-<?php include './Common/header.php'; ?>
+<?php include './admin assests/header.php' ?>
     
-<?php
-session_start();
 
-header("Cache-Control: no-cache, no-store, must-revalidate"); // HTTP 1.1
-header("Pragma: no-cache"); // HTTP 1.0
-header("Expires: 0"); // Proxies
+<div class="row d-flex flex-row flex-wrap h-100 p-0 m-0">
+<?php include './Common/sidebar.php'; ?>
 
+<div class="container col-9 p-0 ">
 
-if ($_SESSION["role"] !== "student") {
-    header("Location: index.php");
-    exit();
+<div class="row d-flex  justify-content-end h-100 m-0 g-0 ">
+
+<div class="container box-color d-flex flex-row justify-content-end align-items-center p-4 border" style=" height: 100px;">
+
+<div class="container">
+<h2>Students </php></h2>
+</div>
+<button class="btn btn-color p-3"> <a href="Signup.php" class="text-color">Add new student</a></button>
+</div>
+
+<div class="container-fluid p-0 m-0">
+<table class="table border table-dark m-0">
+
+  <?php
+
+   if ($result && mysqli_num_rows($result) > 0) {
+    echo "
+      <thead>
+<tr>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>DOB</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Guardian Phone</th>
+            <th>Student Phone</th>
+            <th>CNIC</th>
+            <th>Gender</th>
+            <th>Address</th>
+          </tr>
+      </thead>
+";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "
+          <tbody>
+
+        <tr>
+                <td>{$row['candidate_name']}</td>
+                <td>{$row['father_name']}</td>
+                <td>{$row['date_of_birth']}</td>
+                <td>{$row['email']}</td>
+                <td>{$row['password']}</td>
+                <td>{$row['guardian_phone_no']}</td>
+                <td>{$row['conditate_phone_no']}</td>
+                <td>{$row['father/mother_cnic']}</td>
+                <td>{$row['gender']}</td>
+                <td>{$row['adress']}</td>
+              </tr>
+                </tbody>
+";
+    }
+
+} else {
+    echo "No student data found.";
 }
 ?>
-
-
-<h1 class="text-center">Student page</h1>
-
-<?php echo "Welcome {$_SESSION['role']}";
-?>
-
-<a href="logout.php">Logout</a>
-
-
-<?php include './Common/footer.php'; ?>
+   
+</table>
+</div>
+</div>
+</div>

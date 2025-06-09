@@ -3,16 +3,18 @@
 
 
 
-<?php include './Common/header.php'; ?>
+<?php include './admin assests/header.php' ?>
+
+
+<div class="row d-flex flex-row flex-wrap vh-100 p-0 m-0">
+<?php include './Common/sidebar.php'; ?>
+
+<div class="container-fluid col-9 bg-color d-flex align-items-start justify-content-center 
+flex-md-wrap flex-lg-nowrap row g-0 p-2"  id="main-container">
 
 
 
-<div class="container-fluid bg-color p-3 p-sm-5 p-md-5 p-lg-5 d-flex align-items-center justify-content-center gap-3 
-flex-md-wrap flex-lg-nowrap row g-0 "  id="main-container">
-
-
-
-<div class="container col-12 col-lg-8 col-md-12 p-3 p-lg-5 rounded-3 min-vh-50 max-vh-50  box-color" id="login-container">
+<div class="container col-lg-10 p-3 p-lg-5 rounded-3 box-color mt-5" id="login-container">
     <h1 class="text-center mb-2 text-white ">Register now</h1>
     <h6 class="text-white text-center mb-2" >Learn and Grow in safe hands</h6>
 
@@ -20,7 +22,7 @@ flex-md-wrap flex-lg-nowrap row g-0 "  id="main-container">
     <!-- ---form---- -->
 
     
-    <form method="POST" action="index.php" class="p-4 text-white">
+    <form method="POST" action="admin.php" class=" text-white">
 
   <!-- Name & Father Name -->
   <div class="row mb-3">
@@ -95,7 +97,6 @@ flex-md-wrap flex-lg-nowrap row g-0 "  id="main-container">
 
 <!-- Inside the same form -->
 <button type="submit" name="action" value="Signup" class="btn btn-color">Submit form</button>
-<button type="submit" name="action" value="login" class="btn btn-color">Already have Account?</button>
 
 
 </form>
@@ -111,7 +112,6 @@ flex-md-wrap flex-lg-nowrap row g-0 "  id="main-container">
 
 </div>
 </div>
+</div>
 
 
-
-<?php include './Common/footer.php'; ?>

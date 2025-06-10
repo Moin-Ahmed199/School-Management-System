@@ -9,20 +9,23 @@
 <div class="row d-flex flex-row flex-wrap vh-100 p-0 m-0">
 <?php include './Common/sidebar.php'; ?>
 
-<div class="container-fluid col-9 bg-color d-flex align-items-start justify-content-center 
+<div class="container-fluid col-10  d-flex align-items-start justify-content-center 
 flex-md-wrap flex-lg-nowrap row g-0 p-2"  id="main-container">
 
 
 
 <div class="container col-lg-10 p-3 p-lg-5 rounded-3 box-color mt-5" id="login-container">
-    <h1 class="text-center mb-2 text-white ">Register now</h1>
+<button class="btn btn-color col-2 " onclick="window.location.href='student.php';">
+  Go Back
+</button>
+    <h1 class="text-center mb-2 text-white ">Add new Student</h1>
     <h6 class="text-white text-center mb-2" >Learn and Grow in safe hands</h6>
 
 
     <!-- ---form---- -->
 
-    
-    <form method="POST" action="admin.php" class=" text-white">
+
+    <form method="" action="" class=" text-white">
 
   <!-- Name & Father Name -->
   <div class="row mb-3">
@@ -96,11 +99,9 @@ flex-md-wrap flex-lg-nowrap row g-0 p-2"  id="main-container">
   <!-- Submit -->
 
 <!-- Inside the same form -->
-<button type="submit" name="action" value="Signup" class="btn btn-color">Submit form</button>
-
-
+<button type="submit"  class="btn btn-color col-2">Submit form</button>
 </form>
-    
+
      
         
      

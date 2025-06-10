@@ -16,11 +16,10 @@ $result = mysqli_query($conn, $query);
 <div class="row d-flex flex-row flex-wrap h-100 p-0 m-0">
 <?php include './Common/sidebar.php'; ?>
 
-<div class="container col-9 p-0 ">
+<div class="container col-10 p-2 ">
 
-<div class="row d-flex  justify-content-end h-100 m-0 g-0 ">
 
-<div class="container box-color d-flex flex-row justify-content-end align-items-center p-4 border" style=" height: 100px;">
+<div class="container-fluid box-color d-flex flex-row justify-content-end align-items-center p-4 " style=" height: 100px;">
 
 <div class="container">
 <h2>Students </php></h2>
@@ -65,6 +64,7 @@ $result = mysqli_query($conn, $query);
                 <td>{$row['father/mother_cnic']}</td>
                 <td>{$row['gender']}</td>
                 <td>{$row['adress']}</td>
+
               </tr>
                 </tbody>
 ";
@@ -75,7 +75,8 @@ $result = mysqli_query($conn, $query);
 }
 ?>
    
+
+
 </table>
-</div>
 </div>
 </div>

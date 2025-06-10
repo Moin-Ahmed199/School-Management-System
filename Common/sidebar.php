@@ -1,7 +1,7 @@
 <!--Main Navigation-->
 
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block justify-content-center sidebar collapse hf-bg-color col-3  m-0">
+  <nav id="sidebarMenu" class="collapse d-lg-block justify-content-center sidebar collapse hf-bg-color col-2  m-0">
     <div class="position-sticky ">
       <div class="list-group list-group-flush p-4 m-0 gap-4 hf-bg-color ">
         <a

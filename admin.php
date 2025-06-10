@@ -46,7 +46,7 @@ $total_teachers = $teacher_row['total_teachers'];
 <div class="row d-flex flex-row flex-wrap h-100 p-0 m-0">
 <?php include './Common/sidebar.php'; ?>
 
-<div class="container col-9 p-0 ">
+<div class="container col-10 p-0 ">
 
 <div class="row d-flex justify-content-center h-100 m-0  ">
 

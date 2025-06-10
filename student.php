@@ -24,7 +24,7 @@ $result = mysqli_query($conn, $query);
 <div class="container">
 <h2>Students </php></h2>
 </div>
-<button class="btn btn-color p-3" onclick="window.location.href='studentregister.php';">
+<button class="btn btn-color p-3" onclick="window.location.href='student_register.php';">
   Add new student
 </button>
 </div>
@@ -63,7 +63,7 @@ $result = mysqli_query($conn, $query);
                 <td>{$row['password']}</td>
                 <td>{$row['guardian_phone_no']}</td>
                 <td>{$row['conditate_phone_no']}</td>
-                <td>{$row['father/mother_cnic']}</td>
+                <td>{$row['parent_cnic']}</td>
                 <td>{$row['gender']}</td>
                 <td>{$row['adress']}</td>
 

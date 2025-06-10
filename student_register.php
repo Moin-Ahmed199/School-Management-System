@@ -1,3 +1,69 @@
+<?php
+include './Common/db.php';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Fetch and sanitize input (basic trimming)
+    $name = trim($_POST['name'] ?? '');
+    $father_name = trim($_POST['father_name'] ?? '');
+    $dob = trim($_POST['dob'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $guardian_phone = trim($_POST['guardian_phone'] ?? '');
+    $candidate_phone = trim($_POST['candidate_phone'] ?? '');
+    $parent_cnic = trim($_POST['parent_cnic'] ?? '');
+    $gender = trim($_POST['gender'] ?? '');
+    $address = trim($_POST['address'] ?? '');
+
+    // Plain-text password (for testing only!)
+    $password = "default123";
+
+    // Prepare SQL with exact DB column names (using backticks for problematic ones)
+    $sql = "INSERT INTO students (
+                candidate_name, 
+                father_name, 
+                date_of_birth, 
+                email, 
+                password, 
+                guardian_phone_no, 
+                conditate_phone_no, 
+                parent_cnic, 
+                gender, 
+                adress
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // Prepare the statement
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param(
+            "ssssssssss",
+            $name,
+            $father_name,
+            $dob,
+            $email,
+            $password,
+            $guardian_phone,
+            $candidate_phone,
+            $parent_cnic,
+            $gender,
+            $address
+        );
+
+        // Execute and check result
+        if ($stmt->execute()) {
+            echo "<script>
+                alert(" . json_encode("Student added successfully!") . ");
+                window.location.href = 'student.php';
+            </script>";
+        } else {
+            echo "<script>alert(" . json_encode("Error inserting student: " . $stmt->error) . ");</script>";
+        }
+
+        $stmt->close();
+    } else {
+        echo "<script>alert(" . json_encode("Failed to prepare statement: " . $conn->error) . ");</script>";
+    }
+
+    $conn->close();
+}
+?>
 
 
 
@@ -25,7 +91,7 @@ flex-md-wrap flex-lg-nowrap row g-0 p-2"  id="main-container">
     <!-- ---form---- -->
 
 
-    <form method="" action="" class=" text-white">
+    <form method="POST" action="" class=" text-white">
 
   <!-- Name & Father Name -->
   <div class="row mb-3">

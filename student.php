@@ -48,6 +48,7 @@ $result = mysqli_query($conn, $query);
             <th>CNIC</th>
             <th>Gender</th>
             <th>Address</th>
+            <th>Action</th>
           </tr>
       </thead>
 ";
@@ -66,7 +67,9 @@ $result = mysqli_query($conn, $query);
                 <td>{$row['parent_cnic']}</td>
                 <td>{$row['gender']}</td>
                 <td>{$row['adress']}</td>
-
+<td>
+            <a href='student_update.php?id={$row['id']}' class='btn btn-sm btn-warning'>Update</a>
+            </td>
               </tr>
                 </tbody>
 ";

@@ -9,6 +9,7 @@ session_destroy(); // Make sure session is cleared
 
 
 <?php
+ob_start();
 session_start();
 include './Common/db.php';
 
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($password === $teacher["password"]) {
                 $_SESSION["user_id"] = $teacher["id"];
                 $_SESSION["role"] = "teacher";
-                header("Location: teacher.php");
+                header("Location: teacher_assets/teacher_index.php");
                 exit();
             }
         }
@@ -60,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($password === $student["password"]) {
                 $_SESSION["user_id"] = $student["id"];
                 $_SESSION["role"] = "student";
-                header("Location: student.php");
-                exit();
+                header("Location: students_assets/student_index.php");
+                                exit();
             }
         }
 

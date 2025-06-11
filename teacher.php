@@ -46,6 +46,7 @@ $result = mysqli_query($conn, $query);
           <th>Qualification</th>
           <th>Specialization</th>
           <th>Salary</th>
+          <th>Action</th>
           </tr>
       </thead>
 ";
@@ -63,6 +64,9 @@ $result = mysqli_query($conn, $query);
         <td>{$row['qualification']}</td>
         <td>{$row['specialization']}</td>
         <td>{$row['salary']}</td>
+         <td>
+            <a href='teacher_update.php?id={$row['id']}' class='btn btn-sm btn-warning'>Update</a>
+            </td>
         
                
               </tr>
@@ -75,6 +79,7 @@ $result = mysqli_query($conn, $query);
 }
 ?>
    
+ 
 
 
 </table>
